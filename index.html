@@ -1,0 +1,1841 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aquaflow Plumbing - Local Plumbing Experts</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 0.8rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .header-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0c4a6e;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #0c4a6e;
+      font-weight: 600;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #0ea5e9;
+    }
+
+    /* Hero Section - Water Themed */
+    #home {
+      position: relative;
+      background: linear-gradient(180deg, #0c4a6e 0%, #0369a1 40%, #0ea5e9 100%);
+      color: white;
+      padding: 10rem 2rem 6rem;
+      text-align: center;
+      margin-top: 65px;
+      overflow: hidden;
+      min-height: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Water Flow SVG Background - SHORTENED */
+    .water-flow-bg {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 400px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(1px);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 65%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 65%);
+      animation: waterFlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes waterFlow {
+      0%, 100% {
+        filter: blur(1px);
+        opacity: 0.3;
+      }
+      50% {
+        filter: blur(1.5px);
+        opacity: 0.35;
+      }
+    }
+
+    /* Faucet Container with Symmetric White Illumination */
+    .faucet-container {
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 320px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .faucet-container::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 15%;
+      right: 15%;
+      bottom: 25%;
+      background: radial-gradient(ellipse 80% 60% at center, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.7) 30%, 
+        rgba(255,255,255,0.5) 50%, 
+        rgba(255,255,255,0.3) 70%, 
+        rgba(255,255,255,0.1) 85%, 
+        transparent 100%);
+      border-radius: 40% 40% 60% 60% / 30% 30% 70% 70%;
+      z-index: -1;
+    }
+
+    .faucet-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 220px;
+      height: auto;
+      opacity: 1;
+      filter: 
+        drop-shadow(0 0 30px rgba(255,255,255,1)) 
+        drop-shadow(0 0 60px rgba(255,255,255,0.8)) 
+        drop-shadow(0 0 90px rgba(255,255,255,0.5))
+        drop-shadow(0 0 120px rgba(255,255,255,0.3))
+        drop-shadow(0 15px 35px rgba(14, 165, 233, 0.4));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      margin: 0 auto;
+      margin-top: 16rem;
+    }
+
+    .hero-content h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      letter-spacing: -1px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .hero-content .tagline {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+      font-weight: 400;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      line-height: 1.8;
+    }
+
+    .hero-content .license-info {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+      font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      color: white;
+    }
+
+    .hero-content .license-number {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.75;
+      font-weight: 400;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      color: white;
+    }
+
+    .cta-button {
+      background: #0ea5e9;
+      color: white;
+      padding: 1.2rem 3rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 6px 20px rgba(14,165,233,0.4);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .cta-button:hover {
+      background: #0284c7;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(14,165,233,0.5);
+    }
+
+    .phone-display {
+      margin-top: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+      z-index: 3;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .scroll-indicator:hover {
+      opacity: 1;
+    }
+
+    .scroll-arrow {
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #0c4a6e;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Services Section */
+    #services {
+      background: #f8fafc;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .services-tagline {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #0ea5e9;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      color: #0c4a6e;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .scroll-indicator-services {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 3rem;
+      color: #0c4a6e;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      text-decoration: none;
+    }
+
+    .scroll-indicator-services:hover {
+      opacity: 1;
+    }
+
+    /* Service Detail Overlay */
+    .service-detail-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 3000;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .service-detail-overlay.active {
+      display: block;
+    }
+
+    .service-detail-content {
+      background: white;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 3rem;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .close-detail-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: #64748b;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .close-detail-btn:hover {
+      color: #0c4a6e;
+    }
+
+    .service-detail-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      color: #0c4a6e;
+      margin-bottom: 1.5rem;
+      padding-right: 3rem;
+    }
+
+    .service-detail-description {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #475569;
+      margin-bottom: 2.5rem;
+    }
+
+    .service-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .gallery-placeholder {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0c4a6e 100%);
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 4rem;
+    }
+
+    .gallery-placeholder-text {
+      font-size: 1rem;
+      margin-top: 1rem;
+      opacity: 0.9;
+    }
+
+    .back-to-services-btn {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0c4a6e 100%);
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s;
+      font-family: 'Montserrat', sans-serif;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .back-to-services-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Benefits Section */
+    #benefits {
+      background: white;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+    }
+
+    .benefit-card {
+      background: white;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .benefit-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #00B8A9 0%, #003B73 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.2rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 184, 169, 0.3);
+    }
+
+    .benefit-card h3 {
+      color: #003B73;
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .benefit-card p {
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .scroll-indicator-benefits {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 2rem;
+      color: #003B73;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      text-decoration: none;
+    }
+
+    .scroll-indicator-benefits:hover {
+      opacity: 1;
+    }
+
+    /* About Me Section */
+    #about {
+      background: #F8FBFD;
+    }
+
+    /* Part 1: Main Content */
+    .about-main {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 3rem;
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    .about-text-content {
+      max-width: 700px;
+    }
+
+    .about-text-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #475569;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-intro {
+      font-size: 1.2rem !important;
+      font-weight: 500;
+      color: #003B73 !important;
+    }
+
+    .about-text-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-photo-professional {
+      position: sticky;
+      top: 100px;
+    }
+
+    .photo-placeholder {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .photo-placeholder.professional {
+      background: linear-gradient(135deg, #003B73 0%, #00B8A9 100%);
+      height: 450px;
+      color: white;
+    }
+
+    .photo-placeholder.vacation {
+      background: linear-gradient(135deg, #0ea5e9 0%, #00B8A9 100%);
+      height: 300px;
+      color: white;
+    }
+
+    .photo-placeholder-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 15px;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .camera-icon {
+      font-size: 4rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .placeholder-text {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      font-weight: 500;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .photo-icon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .photo-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    /* Part 2: Personal Touch */
+    .about-personal {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-photo-vacation {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-caption {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .photo-caption {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-style: italic;
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Responsive About Section */
+    @media (max-width: 968px) {
+      .about-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-photo-professional {
+        position: static;
+        order: -1;
+      }
+
+      .photo-placeholder.professional {
+        height: 350px;
+      }
+
+      .photo-placeholder.vacation {
+        height: 250px;
+      }
+
+      .photo-placeholder-card {
+        height: 350px;
+      }
+    }
+
+    /* Contact Section */
+    #contact {
+      background: #F8FBFD;
+    }
+
+    .contact-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 3.5rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .contact-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: #003B73;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .service-area-text {
+      font-size: 1.15rem;
+      color: #475569;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .contact-details-grid {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.2rem;
+      background: #F8FBFD;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-detail-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 184, 169, 0.15);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: #00B8A9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-content {
+      flex: 1;
+    }
+
+    .contact-detail-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #003B73;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail-value {
+      font-size: 1.25rem;
+      color: #00B8A9;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      display: block;
+    }
+
+    .contact-detail-value:hover {
+      color: #003B73;
+    }
+
+    .hours-section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: #F8FBFD;
+      border-radius: 15px;
+    }
+
+    .hours-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      color: #003B73;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .hours-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.05rem;
+    }
+
+    .hours-day {
+      font-weight: 600;
+      color: #003B73;
+    }
+
+    .hours-time {
+      color: #475569;
+    }
+
+    .hours-emergency {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #E0F2FE;
+      border-radius: 10px;
+      color: #003B73;
+      font-size: 0.95rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .quote-button {
+      display: block;
+      width: 100%;
+      background: #00B8A9;
+      color: white;
+      padding: 1.3rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 184, 169, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .quote-button:hover {
+      background: #009688;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 184, 169, 0.4);
+    }
+
+    .contact-tagline {
+      font-size: 1.1rem;
+      color: #64748b;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 55px;
+      height: 55px;
+      background: #00B8A9;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 184, 169, 0.4);
+      transition: all 0.3s;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-to-top.visible {
+      display: flex;
+    }
+
+    .back-to-top:hover {
+      background: #003B73;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 59, 115, 0.4);
+    }
+
+    .back-to-top-arrow {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    /* Floating Review Button */
+    .floating-review-btn {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #00B8A9;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 184, 169, 0.4);
+      transition: all 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      animation: gentlePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% {
+        box-shadow: 0 4px 15px rgba(0, 184, 169, 0.4);
+      }
+      50% {
+        box-shadow: 0 4px 20px rgba(0, 184, 169, 0.6);
+      }
+    }
+
+    .floating-review-btn:hover {
+      background: #009688;
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(0, 184, 169, 0.6);
+      animation: none;
+    }
+
+    .floating-review-btn::after {
+      content: 'Leave a Review';
+      position: absolute;
+      left: 75px;
+      background: #003B73;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: 'Open Sans', sans-serif;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .floating-review-btn:hover::after {
+      opacity: 1;
+    }
+
+    /* Responsive Contact Section */
+    @media (max-width: 768px) {
+      .contact-container {
+        padding: 2.5rem 2rem;
+      }
+
+      .contact-subtitle {
+        font-size: 1.6rem;
+      }
+
+      .service-area-text {
+        font-size: 1.05rem;
+      }
+
+      .contact-detail-value {
+        font-size: 1.1rem;
+      }
+
+      .back-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+      }
+
+      .floating-review-btn {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+      }
+
+      .floating-review-btn::after {
+        left: 70px;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #0c4a6e;
+      color: white;
+      text-align: center;
+      padding: 2.5rem 2rem;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #0c4a6e;
+      cursor: pointer;
+      position: absolute;
+      right: 2rem;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .modal-header h2 {
+      color: #0c4a6e;
+      font-size: 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #64748b;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: #0c4a6e;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #0c4a6e;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #0ea5e9;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0c4a6e 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .success-message {
+      background: #10b981;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+
+      #home {
+        padding: 8rem 1.5rem 5rem;
+        min-height: 80%;
+      }
+
+      .hero-content {
+        margin-top: 12rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-content .tagline {
+        font-size: 1.1rem;
+      }
+
+      .hero-content .license-info {
+        font-size: 0.95rem;
+      }
+
+      .hero-content .license-number {
+        font-size: 0.85rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .faucet-container {
+        width: 240px;
+        height: 240px;
+        top: 10%;
+      }
+
+      .faucet-overlay {
+        width: 160px;
+      }
+
+      .water-flow-bg {
+        width: 350px;
+        height: 300px;
+      }
+
+      .phone-display {
+        font-size: 1.1rem;
+      }
+
+      .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+
+      .header-text {
+        font-size: 0.75rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav>
+   <div class="nav-container">
+    <div class="header-text">
+     Aquaflow Plumbing · Residential Plumber · 360-948-6585
+    </div><button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+     <li><a href="#home">🏠 Home</a></li>
+     <li><a href="#services">🧰 Services</a></li>
+     <li><a href="#benefits">💸 Benefits</a></li>
+     <li><a href="#about">👤 About Me</a></li>
+     <li><a href="#contact">📍 Contact</a></li>
+    </ul>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home"><!-- Water Flow Background - SHORTENED -->
+   <svg class="water-flow-bg" viewbox="0 0 200 300" xmlns="http://www.w3.org/2000/svg"><defs>
+     <lineargradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.05" />
+     </lineargradient>
+    </defs> <!-- Water stream --> <path d="M 100 0 Q 95 40 100 80 Q 105 120 100 160 Q 95 200 100 240 Q 105 280 100 300" stroke="url(#waterGradient)" stroke-width="25" fill="none" opacity="0.7" /> <path d="M 100 0 Q 105 40 100 80 Q 95 120 100 160 Q 105 200 100 240 Q 95 280 100 300" stroke="url(#waterGradient)" stroke-width="15" fill="none" opacity="0.5" /> <!-- Water droplets --> <circle cx="85" cy="60" r="6" fill="#0ea5e9" opacity="0.4">
+     <animate attributename="cy" from="60" to="300" dur="2.5s" repeatcount="indefinite" />
+     <animate attributename="opacity" from="0.4" to="0" dur="2.5s" repeatcount="indefinite" />
+    </circle> <circle cx="115" cy="90" r="5" fill="#0ea5e9" opacity="0.4">
+     <animate attributename="cy" from="90" to="300" dur="2.2s" repeatcount="indefinite" />
+     <animate attributename="opacity" from="0.4" to="0" dur="2.2s" repeatcount="indefinite" />
+    </circle> <circle cx="90" cy="120" r="6" fill="#0ea5e9" opacity="0.4">
+     <animate attributename="cy" from="120" to="300" dur="2.8s" repeatcount="indefinite" />
+     <animate attributename="opacity" from="0.4" to="0" dur="2.8s" repeatcount="indefinite" />
+    </circle>
+   </svg><!-- Faucet with White Outline Effect -->
+   <div class="faucet-container"><img src="https://i.postimg.cc/pXtYL5gf/Chat-GPT-Image-Nov-11-2025-11-01-50-AM.png" alt="" class="faucet-overlay" onerror="this.style.display='none';">
+   </div>
+   <div class="hero-content">
+    <h1 id="businessName">Aquaflow Plumbing</h1>
+    <p class="tagline" id="tagline">Reliable. Professional. Local Experts You Can Trust.</p>
+    <p class="license-info">Licensed, Bonded &amp; Insured</p>
+    <p class="license-number">License #SINGEBJ759NL</p><a href="tel:+13609486585" class="cta-button">Get a Free Quote</a>
+    <div class="phone-display" id="phoneDisplay">
+     (360) 948-6585
+    </div>
+   </div><a href="#services" class="scroll-indicator"> <span class="scroll-arrow">↓</span> <span>View Services</span> </a>
+  </section><!-- Services Section -->
+  <section id="services">
+   <div class="container">
+    <h2 class="section-title" id="servicesTitle">My Services</h2>
+    <p class="services-tagline">Click any button below for pictures and more information.</p>
+    <div class="services-grid"><button class="service-card" onclick="showServiceDetail('water-heater')">
+      <div class="service-icon">
+       🔥
+      </div><h3>Water Heater Installation &amp; Repair</h3></button> <button class="service-card" onclick="showServiceDetail('faucet')">
+      <div class="service-icon">
+       🚰
+      </div><h3>Faucet Installation &amp; Repair</h3></button> <button class="service-card" onclick="showServiceDetail('toilet')">
+      <div class="service-icon">
+       🚽
+      </div><h3>Toilet Installation &amp; Repair</h3></button> <button class="service-card" onclick="showServiceDetail('shower')">
+      <div class="service-icon">
+       🚿
+      </div><h3>Shower Repair</h3></button> <button class="service-card" onclick="showServiceDetail('water-pipe')">
+      <div class="service-icon">
+       💧
+      </div><h3>Water Pipe Repair &amp; Replacement</h3></button> <button class="service-card" onclick="showServiceDetail('drain-pipe')">
+      <div class="service-icon">
+       🔧
+      </div><h3>Drain Pipe Repair &amp; Replacement</h3></button> <button class="service-card" onclick="showServiceDetail('general')">
+      <div class="service-icon">
+       🛠️
+      </div><h3>General Plumbing Repair</h3></button> <button class="service-card" onclick="showServiceDetail('emergency')">
+      <div class="service-icon">
+       🚨
+      </div><h3>Emergency Plumbing Services</h3></button>
+    </div><a href="#benefits" class="scroll-indicator-services"> <span class="scroll-arrow">↓</span> <span>View Benefits</span> </a>
+   </div>
+  </section><!-- Service Detail Pages -->
+  <div id="serviceDetailOverlay" class="service-detail-overlay">
+   <div class="service-detail-content"><button class="close-detail-btn" onclick="closeServiceDetail()">×</button>
+    <div id="serviceDetailBody"></div><button class="back-to-services-btn" onclick="closeServiceDetail()">Back to Services ↑</button>
+   </div>
+  </div><!-- Benefits Section -->
+  <section id="benefits">
+   <div class="container">
+    <h2 class="section-title" id="benefitsTitle">Why Choose Me</h2>
+    <div class="benefits-grid">
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       📋
+      </div>
+      <h3>Free Quotes</h3>
+      <p>I offer no-obligation estimates on all services so you know what to expect before work begins.</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       💵
+      </div>
+      <h3>Flat-Rate Pricing</h3>
+      <p>I charge by the job, not by the hour, with one fair price for each project. If new issues come up during a repair, I'll always explain the situation and get your approval before proceeding with any additional work.</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       🎖️
+      </div>
+      <h3>Military Discount - 10% Off</h3>
+      <p>Active duty and veterans receive 10% off any service as my way of saying thank you for your service.</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       ❤️
+      </div>
+      <h3>Senior Discount - 5% Off</h3>
+      <p>For customers 65 and older, quality plumbing and peace of mind at a fair price.</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       🕐
+      </div>
+      <h3>No Emergency Surcharge</h3>
+      <p>You'll get the same reliable service, day or night, with no extra fees for after-hours or weekend calls.</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       🔧
+      </div>
+      <h3>Aquaflow Care Plan - $199 / Year (Optional)</h3>
+      <p>For homeowners who like peace of mind, I offer an optional Aquaflow Care Plan that includes an annual water-heater flush, a free home plumbing inspection, priority scheduling, and 5% off labor for the entire year.</p>
+     </div>
+    </div><a href="#about" class="scroll-indicator-benefits"> <span class="scroll-arrow">↓</span> <span>Learn More About Me</span> </a>
+   </div>
+  </section><!-- About Me Section -->
+  <section id="about">
+   <div class="container">
+    <h2 class="section-title">About Me</h2><!-- Part 1: Main Content with Professional Photo -->
+    <div class="about-main">
+     <div class="about-text-content">
+      <p class="about-intro">Hi, I'm Brandon, the owner of Aquaflow Plumbing. I take pride in providing reliable, high-quality residential plumbing services throughout Kitsap, Mason, and Pierce County. My goal in becoming a one-man operation was to offer homeowners fair, honest pricing that larger corporations often can't or won't provide.</p>
+      <p>When you call Aquaflow, you'll work directly with me, no subcontractors, no middlemen. I'm passionate about my craft, and I treat every home I work in like my own.</p>
+      <p>While most of my work is local to Kitsap, I'm always willing to travel for the right job if it means helping a homeowner get the reliable service they deserve.</p>
+      <p>Aquaflow Plumbing is built on hard work, honesty, and strong community connections. While I handle every job personally, I'm fortunate to have an incredible advisor, Brett, whose experience and relationships in the community have helped me reach more homeowners who value dependable, local plumbing service.</p>
+     </div>
+     <div class="about-photo-professional">
+      <div class="photo-placeholder-card">
+       <div class="camera-icon">
+        📷
+       </div>
+       <div class="placeholder-text">
+        Photo coming soon
+       </div>
+      </div>
+      <p class="photo-caption">Brandon (Owner) and Brett (Advisor) - Aquaflow Plumbing</p>
+     </div>
+    </div><!-- Part 2: Personal Touch -->
+    <div class="about-personal">
+     <div class="about-photo-vacation">
+      <div class="photo-placeholder vacation">
+       <div class="photo-icon">
+        🌊✈️
+       </div>
+       <div class="photo-text">
+        Brandon &amp; Spouse
+       </div>
+      </div>
+     </div>
+     <p class="about-caption">Outside of work, I love spending time with my spouse exploring new places and relaxing near the water.</p>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact">
+   <div class="container">
+    <h2 class="section-title" id="contactTitle">Contact &amp; Location</h2>
+    <div class="contact-container">
+     <h3 class="contact-subtitle">Contact Aquaflow Plumbing</h3>
+     <p class="service-area-text">📍 Serving Kitsap, Mason, and Pierce County, and willing to travel for the right job!</p>
+     <div class="contact-details-grid">
+      <div class="contact-detail-item">
+       <div class="contact-icon">
+        📞
+       </div>
+       <div class="contact-detail-content">
+        <div class="contact-detail-label">
+         Phone
+        </div><a href="tel:+13609486585" class="contact-detail-value">(360) 948-6585</a>
+       </div>
+      </div>
+      <div class="contact-detail-item">
+       <div class="contact-icon">
+        📧
+       </div>
+       <div class="contact-detail-content">
+        <div class="contact-detail-label">
+         Email
+        </div><a href="mailto:brandon@aquaflowplumbing.us" class="contact-detail-value">brandon@aquaflowplumbing.us</a>
+       </div>
+      </div>
+     </div>
+     <div class="hours-section">
+      <h4 class="hours-title">Hours of Operation</h4>
+      <div class="hours-list">
+       <div class="hours-item"><span class="hours-day">Monday-Friday:</span> <span class="hours-time">8:00 AM - 6:00 PM</span>
+       </div>
+       <div class="hours-item"><span class="hours-day">Saturday:</span> <span class="hours-time">9:00 AM - 3:00 PM</span>
+       </div>
+      </div>
+      <div class="hours-emergency">
+       Emergency service available at all other hours
+      </div>
+     </div><a href="tel:+13609486585" class="quote-button">Request a Free Quote</a>
+     <p class="contact-tagline">Local plumbing, personal service, and honest pricing, from my family to yours.</p>
+    </div>
+   </div>
+  </section><!-- Review Section -->
+  <section id="reviews" style="background: #F8FBFD; padding: 4rem 2rem;">
+   <div class="container">
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+     <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">
+      💬
+     </div>
+     <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: #003B73; margin-bottom: 1.2rem; font-weight: 700;">Happy with your service?</h3>
+     <p style="font-size: 1.15rem; line-height: 1.8; color: #475569; margin-bottom: 2.5rem;">I'd really appreciate it if you took a moment to share your experience. It helps local homeowners find a plumber they can trust.</p><a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.6rem; background: #00B8A9; color: white; padding: 1.1rem 2.5rem; border-radius: 50px; font-size: 1.15rem; font-weight: 600; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 184, 169, 0.3); font-family: 'Montserrat', sans-serif;"> <span style="font-size: 1.3rem;">⭐</span> <span>Leave a Review</span> <span style="font-size: 1.1rem;">✨</span> </a>
+    </div>
+   </div>
+  </section><!-- Floating Review Button --> <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" rel="noopener noreferrer" class="floating-review-btn" aria-label="Leave a review"> ⭐ </a> <!-- Back to Top Button --> <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top"> <span class="back-to-top-arrow">↑</span> </button> <!-- Footer -->
+  <footer>
+   <p>© 2025 <span id="businessNameFooter">Aquaflow Plumbing</span>. All rights reserved.</p>
+   <p>Licensed, Bonded &amp; Insured</p>
+  </footer><!-- Request Service Modal -->
+  <div class="modal" id="serviceModal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>Request Service</h2><button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="success-message" id="successMessage">
+     Thank you! We'll contact you shortly.
+    </div>
+    <form id="serviceForm">
+     <div class="form-group"><label for="name">Name *</label> <input type="text" id="name" name="name" required>
+     </div>
+     <div class="form-group"><label for="phone">Phone *</label> <input type="tel" id="phone" name="phone" required>
+     </div>
+     <div class="form-group"><label for="email">Email *</label> <input type="email" id="email" name="email" required>
+     </div>
+     <div class="form-group"><label for="service">Service Needed</label> <input type="text" id="service" name="service" placeholder="e.g., Drain Cleaning">
+     </div>
+     <div class="form-group"><label for="message">Message</label> <textarea id="message" name="message" placeholder="Describe your plumbing issue..."></textarea>
+     </div><button type="submit" class="submit-btn">Submit Request</button>
+    </form>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      business_name: "Aquaflow Plumbing",
+      tagline: "Reliable. Professional. Local Plumber You Can Trust.",
+      phone_number: "(360) 948-6585",
+      services_title: "My Services",
+      benefits_title: "Why Choose Me",
+      contact_title: "Contact & Location",
+      service_area: "Serving Kitsap County & Surrounding Areas",
+      email: "info@aquaflowplumbing.us",
+      background_color: "#F8FBFD",
+      primary_color: "#0c4a6e",
+      accent_color: "#0ea5e9",
+      text_color: "#475569",
+      button_color: "#00B8A9",
+      font_family: "Open Sans",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      // Update text content
+      document.getElementById('businessName').textContent = config.business_name || defaultConfig.business_name;
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('phoneDisplay').textContent = config.phone_number || defaultConfig.phone_number;
+      document.getElementById('servicesTitle').textContent = config.services_title || defaultConfig.services_title;
+      document.getElementById('benefitsTitle').textContent = config.benefits_title || defaultConfig.benefits_title;
+      document.getElementById('contactTitle').textContent = config.contact_title || defaultConfig.contact_title;
+      document.getElementById('businessNameFooter').textContent = config.business_name || defaultConfig.business_name;
+      
+      // Update colors
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const buttonColor = config.button_color || defaultConfig.button_color;
+      
+      // Apply background colors
+      document.getElementById('services').style.backgroundColor = backgroundColor;
+      document.getElementById('about').style.backgroundColor = backgroundColor;
+      document.getElementById('contact').style.backgroundColor = backgroundColor;
+      
+      // Apply primary colors (headings, navigation)
+      document.querySelectorAll('.section-title, .header-text, .nav-links a, .service-card h3').forEach(el => {
+        el.style.color = primaryColor;
+      });
+      
+      // Apply accent colors (hero gradient, buttons)
+      document.querySelector('#home').style.background = `linear-gradient(180deg, ${primaryColor} 0%, ${accentColor} 40%, ${accentColor} 100%)`;
+      document.querySelectorAll('.cta-button').forEach(el => {
+        el.style.backgroundColor = accentColor;
+      });
+      
+      // Apply text colors
+      document.querySelectorAll('.about-text-content p, .service-area-text, .benefit-card p').forEach(el => {
+        el.style.color = textColor;
+      });
+      
+      // Apply button colors
+      document.querySelectorAll('.quote-button, .floating-review-btn, .back-to-top, .contact-icon, .benefit-icon').forEach(el => {
+        el.style.backgroundColor = buttonColor;
+      });
+      
+      // Update fonts
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = 'Arial, sans-serif';
+      
+      // Apply custom font to primary text
+      document.querySelectorAll('h1, h2, h3, .tagline, .hero-content, .section-title').forEach(el => {
+        el.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      });
+      
+      // Apply font sizing
+      document.querySelector('#businessName').style.fontSize = `${baseSize * 2.8}px`;
+      document.querySelectorAll('.section-title').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.75}px`;
+      });
+      document.querySelectorAll('p, .tagline').forEach(el => {
+        el.style.fontSize = `${baseSize}px`;
+      });
+      document.querySelectorAll('.service-card h3, .benefit-card h3').forEach(el => {
+        el.style.fontSize = `${baseSize * 0.9}px`;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => {
+              config.button_color = value;
+              window.elementSdk.setConfig({ button_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["business_name", config.business_name || defaultConfig.business_name],
+        ["tagline", config.tagline || defaultConfig.tagline],
+        ["phone_number", config.phone_number || defaultConfig.phone_number],
+        ["services_title", config.services_title || defaultConfig.services_title],
+        ["benefits_title", config.benefits_title || defaultConfig.benefits_title],
+        ["contact_title", config.contact_title || defaultConfig.contact_title],
+        ["service_area", config.service_area || defaultConfig.service_area],
+        ["email", config.email || defaultConfig.email]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Modal functions
+    function openModal() {
+      document.getElementById('serviceModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('serviceModal').classList.remove('active');
+      document.getElementById('successMessage').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('serviceModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Form submission
+    document.getElementById('serviceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const successMessage = document.getElementById('successMessage');
+      successMessage.style.display = 'block';
+      
+      // Reset form
+      this.reset();
+      
+      // Close modal after 2 seconds
+      setTimeout(() => {
+        closeModal();
+      }, 2000);
+    });
+
+    // Service Details Data
+    const serviceDetails = {
+      'water-heater': {
+        title: 'Water Heater Installation & Repair',
+        icon: '🔥',
+        description: 'Whether you need a brand new water heater installed or your current one repaired, I\'ve got you covered. I work with all types of water heaters including traditional tank models and modern tankless systems. I\'ll help you choose the right size and type for your home, ensuring you have reliable hot water when you need it. I offer same-day service for most repairs and can typically complete installations within a day.'
+      },
+      'faucet': {
+        title: 'Faucet Installation & Repair',
+        icon: '🚰',
+        description: 'From dripping faucets to complete replacements, I handle all your faucet needs. A leaky faucet isn\'t just annoying, it wastes water and money. I can repair or replace kitchen faucets, bathroom sink faucets, and outdoor spigots. Whether you\'re upgrading to a modern touchless model or need a quick fix for a worn-out washer, I\'ll get the job done right the first time.'
+      },
+      'toilet': {
+        title: 'Toilet Installation & Repair',
+        icon: '🚽',
+        description: 'Toilet troubles? I can help! Whether your toilet is running constantly, won\'t flush properly, or needs to be replaced entirely, I have the expertise to solve the problem quickly. I install all types of toilets including standard models, low-flow options, and comfort-height designs. Most repairs can be completed in a single visit, getting your bathroom back to normal fast.'
+      },
+      'shower': {
+        title: 'Shower Repair',
+        icon: '🚿',
+        description: 'Don\'t let shower problems ruin your day. I fix all types of shower issues including low water pressure, temperature control problems, leaking shower heads, and faulty valves. Whether you have a traditional shower, a combination tub-shower, or a modern walk-in shower, I have the tools and knowledge to restore it to perfect working condition. I can also upgrade your shower fixtures to give your bathroom a fresh new look.'
+      },
+      'water-pipe': {
+        title: 'Water Pipe Repair & Replacement',
+        icon: '💧',
+        description: 'Water pipe problems can cause serious damage if not addressed quickly. I specialize in locating and repairing leaks, replacing corroded pipes, and upgrading old plumbing systems. Whether you have a burst pipe emergency or want to replace aging galvanized pipes with modern materials, I use the latest techniques to minimize disruption to your home. I work with all kinds of pipe to ensure long-lasting, reliable results.'
+      },
+      'drain-pipe': {
+        title: 'Drain Pipe Repair & Replacement',
+        icon: '🔧',
+        description: 'Slow drains and clogs are more than just inconvenient, they can indicate serious problems with your drain pipes. I provide professional drain cleaning, repair damaged drain lines, and replace old or broken pipes. I use professional-grade drain snakes for in-home drain cleaning and clog removal. I can clear most blockages safely and efficiently without unnecessary digging or damage.'
+      },
+      'general': {
+        title: 'General Plumbing Repair',
+        icon: '🛠️',
+        description: 'Not every plumbing problem fits into a neat category, and that\'s okay! My general plumbing services cover everything from garbage disposal repairs to sump pump maintenance, pressure regulator adjustments to fixture replacements. No job is too small or too unusual. I\'ve seen it all and can diagnose and fix just about any plumbing issue you might encounter in your home.'
+      },
+      'emergency': {
+        title: 'Emergency Plumbing Services',
+        icon: '🚨',
+        description: 'Plumbing emergencies don\'t wait for business hours, and neither do I. I offer 24/7 emergency plumbing services for those urgent situations that can\'t wait: burst pipes, severe leaks, backed-up sewers, and no hot water in winter. When you call me for an emergency, I respond quickly to minimize damage to your property. My truck is fully stocked with common parts and tools so I can often resolve your emergency in a single visit, even in the middle of the night.'
+      }
+    };
+
+    // Photo counts for each service
+    const servicePhotoCounts = {
+      'faucet': 3,
+      'water-heater': 29,
+      'shower': 17,
+      'toilet': 8,
+      'water-pipe': 28,
+      'drain-pipe': 30,
+      'general': 7,
+      'emergency': 3
+    };
+
+    // Show Service Detail
+    function showServiceDetail(serviceId) {
+      const service = serviceDetails[serviceId];
+      if (!service) return;
+
+      const photoCount = servicePhotoCounts[serviceId] || 3;
+      
+      // Generate photo placeholders
+      let galleryHTML = '';
+      for (let i = 1; i <= photoCount; i++) {
+        galleryHTML += `
+          <div class="gallery-item">
+            <div class="gallery-placeholder">
+              ${service.icon}
+              <div class="gallery-placeholder-text">Photo ${i} coming soon</div>
+            </div>
+          </div>
+        `;
+      }
+
+      const detailBody = document.getElementById('serviceDetailBody');
+      detailBody.innerHTML = `
+        <h2 class="service-detail-title">${service.icon} ${service.title}</h2>
+        <p class="service-detail-description">${service.description}</p>
+        <div class="service-gallery">
+          ${galleryHTML}
+        </div>
+      `;
+
+      document.getElementById('serviceDetailOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close Service Detail
+    function closeServiceDetail() {
+      document.getElementById('serviceDetailOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close detail when clicking outside
+    document.getElementById('serviceDetailOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeServiceDetail();
+      }
+    });
+
+    // Back to Top Button functionality
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 500) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99e35570e7e4b9a6',t:'MTc2MzA5MDAxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
