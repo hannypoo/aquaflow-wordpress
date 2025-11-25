@@ -1414,11 +1414,11 @@
     <div class="about-personal">
      <div class="about-photo-vacation">
  <div class="about-photo-vacation">
-  <img 
-    src="/mnt/data/IMG_0203.jpg" 
-    alt="Brandon and spouse on boat in Maui" 
-    style="width:100%; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.12);"
-  >
+  <img
+  src="https://yourdomain.com/wp-content/uploads/2025/11/IMG_0203.jpg"
+  alt="Brandon and spouse on boat in Maui"
+  style="width:100%; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.12);"
+/>
 </div>
      </div>
      <p class="about-caption">Outside of work, I love spending time with my spouse exploring new places and relaxing near the water.</p>
@@ -1815,27 +1815,35 @@ const servicePhotos = {
 
 
     // Show Service Detail
-    function showServiceDetail(serviceId) {
-      const service = serviceDetails[serviceId];
-      if (!service) return;
+function showServiceDetail(serviceId) {
+    const service = serviceDetails[serviceId];
+    if (!service) return;
 
-      const photoCount = servicePhotoCounts[serviceId] || 3;
-      
-   // Generate REAL photos
-let galleryHTML = '';
+    const photos = servicePhotos[serviceId] || [];
 
-const photos = servicePhotos[serviceId] || [];
+    // Build gallery HTML
+    let galleryHTML = "";
+    photos.forEach(url => {
+        galleryHTML += `
+            <div class="gallery-item">
+                <img src="${url}" style="width:100%; border-radius:12px;">
+            </div>
+        `;
+    });
 
-if (photos.length === 0) {
-  galleryHTML = `<p class="no-photos">No photos available for this service.</p>`;
-} else {
-  photos.forEach(url => {
-    galleryHTML += `
-      <div class="gallery-item">
-        <img src="${url}" class="service-photo">
-      </div>
+    // Insert into popup
+    const detailBody = document.getElementById("serviceDetailBody");
+    detailBody.innerHTML = `
+        <h2 class="service-detail-title">${service.icon} ${service.title}</h2>
+        <p class="service-detail-description">${service.description}</p>
+        <div class="service-gallery">
+            ${galleryHTML}
+        </div>
     `;
-  });
+
+    // Show popup
+    document.getElementById("serviceDetailOverlay").classList.add("active");
+    document.body.style.overflow = "hidden";
 }
 
 // Add Facebook link under gallery
