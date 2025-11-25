@@ -1831,11 +1831,24 @@ function showServiceDetail(serviceId) {
         `;
     });
 
+    // ⭐ Add Facebook link inside the popup (this is the safe correct spot)
+    galleryHTML += `
+        <div class="more-photos" style="text-align:center; margin-top:1.5rem;">
+            <a href="https://www.facebook.com/AquaflowPlumbingBrandonS"
+               target="_blank"
+               class="facebook-btn"
+               style="display:inline-block; padding:10px 20px; background:#00B8A9; color:white; border-radius:8px; text-decoration:none; font-weight:600;">
+               See More Photos on Facebook
+            </a>
+        </div>
+    `;
+
     // Insert into popup
     const detailBody = document.getElementById("serviceDetailBody");
     detailBody.innerHTML = `
         <h2 class="service-detail-title">${service.icon} ${service.title}</h2>
         <p class="service-detail-description">${service.description}</p>
+
         <div class="service-gallery">
             ${galleryHTML}
         </div>
@@ -1846,14 +1859,6 @@ function showServiceDetail(serviceId) {
     document.body.style.overflow = "hidden";
 }
 
-// Add Facebook link under gallery
-galleryHTML += `
-  <div class="more-photos">
-    <a href="https://www.facebook.com/AquaflowPlumbingBrandonS" target="_blank" class="facebook-btn">
-      See More Photos on Facebook
-    </a>
-  </div>
-`;
 
 
       const detailBody = document.getElementById('serviceDetailBody');
