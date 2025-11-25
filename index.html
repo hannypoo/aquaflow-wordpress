@@ -1860,20 +1860,6 @@ function showServiceDetail(serviceId) {
 }
 
 
-
-      const detailBody = document.getElementById('serviceDetailBody');
-      detailBody.innerHTML = `
-        <h2 class="service-detail-title">${service.icon} ${service.title}</h2>
-        <p class="service-detail-description">${service.description}</p>
-        <div class="service-gallery">
-          ${galleryHTML}
-        </div>
-      `;
-
-      document.getElementById('serviceDetailOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
     // Close Service Detail
     function closeServiceDetail() {
       document.getElementById('serviceDetailOverlay').classList.remove('active');
