@@ -3,7 +3,10 @@ name: Deploy to SiteGround
 on:
   push:
     branches: [ main ]
-    paths: [ 'index.html' ]
+    paths:
+      - 'index.html'
+      - 'style.css'
+      - 'script.js'
   workflow_dispatch:
 
 jobs:
@@ -16,10 +19,10 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update -qq && sudo apt-get install -y lftp
 
-      - name: Upload index.html via FTPS
+      - name: Upload site files via FTPS
         env:
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           lftp -u "${{ secrets.FTP_USERNAME }}" --env-password \
-            -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate no; put -O /aquaflowplumbing.us/public_html/ index.html; bye" \
+            -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate no; cd /aquaflowplumbing.us/public_html/; put index.html; put style.css; put script.js; bye" \
             ftp.aquaflowplumbing.us
